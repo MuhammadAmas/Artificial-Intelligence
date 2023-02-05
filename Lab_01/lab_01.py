@@ -1,23 +1,22 @@
 # TASK: LAB # 01
-# Name: Muhammad Amas 
+# Name: Muhammad Amas
 # Seat No: B20102077
 
 # Dir and Help
 
-# Try out some of the string functions listed in dir (ignore those with underscores '_' around the method name). 
+# Try out some of the string functions listed in dir (ignore those with underscores '_' around the method name).
 
 print(dir(str))
 str = "Muhammad Amas Waseem"
-str1=str.capitalize()
-str2 =str.upper()
-str3 =str. lower()
-str4= str.count("m")
+str1 = str.capitalize()
+str2 = str.upper()
+str3 = str. lower()
+str4 = str.count("m")
 print(str1)
 print(str2)
 print(str3)
 print(str4)
-print (help(str))
-
+print(help(str))
 
 
 # Exercise Python input /output Basic operations
@@ -63,14 +62,13 @@ list.reverse()
 print(list)
 
 
-
 # (ii)Write a Python program to count the number of strings where the string length is 2 or more and the first and last character are same from a given list of strings.
 
 list = ['abc', 'xyz', 'aba', '1221']
 count = 0
 for x in list:
     if len(x) >= 2 and x[0] == x[-1]:
-        count+=1
+        count += 1
 print(count)
 
 
@@ -78,25 +76,24 @@ print(count)
 
 # (i)Use dir and help to learn about the functions you can call on dictionaries and implement it.
 
-dic1={1:10, 2:20}
-dic2={3:30, 4:40}
-dic3={5:50,6:60}
-dic4 ={}
+dic1 = {1: 10, 2: 20}
+dic2 = {3: 30, 4: 40}
+dic3 = {5: 50, 6: 60}
+dic4 = {}
 
-for d in (dic1, dic2, dic3): dic4.update(d)
+for d in (dic1, dic2, dic3):
+    dic4.update(d)
 print(dic4)
-
 
 
 # (ii)Write a Python script to concatenate following dictionaries to create a new one.
 
-dic1={1:10, 2:20}
+dic1 = {1: 10, 2: 20}
 print(dic1.keys())
 print(dic1.values())
 print(dic1.items())
-dic1.update({3:30, 4:40})
+dic1.update({3: 30, 4: 40})
 print(dic1)
-
 
 
 # List Comprehensions
@@ -109,10 +106,9 @@ print("Lower case string :", [x.lower() for x in str if len(x) > 5])
 
 # (ii)Write a Python program to print a specified list after removing the 0th, 4th and 5th elements
 
-list =  ['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow','Teapink']
-colors = [x for (i,x) in enumerate(list) if i not in (0, 4, 5)]
+list = ['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow', 'Teapink']
+colors = [x for (i, x) in enumerate(list) if i not in (0, 4, 5)]
 print(colors)
-
 
 
 # Exercise Create a Python Program that perform following tasks for any problem of your choice:
@@ -121,20 +117,27 @@ print(colors)
 tasks = []
 
 # Function to add a task
+
+
 def add_task(task):
     tasks.append(task)
     print("Task added successfully: " + task)
 
 # Function to view all tasks
+
+
 def view_tasks():
     print("Tasks:")
     for i, task in enumerate(tasks):
         print(str(i + 1) + ". " + task)
 
 # Function to delete a task
+
+
 def delete_task(index):
     task = tasks.pop(index - 1)
     print("Task deleted successfully: " + task)
+
 
 # Main loop to interact with user
 while True:
@@ -160,7 +163,6 @@ while True:
         print("Invalid choice")
 
 
-
 # Bit wise operator
 a = 60
 b = 30
@@ -172,4 +174,4 @@ b = 30
 # c = a<<2
 # c = a>>2
 
-print("Line #",bin(c))
+print("Line #", bin(c))
