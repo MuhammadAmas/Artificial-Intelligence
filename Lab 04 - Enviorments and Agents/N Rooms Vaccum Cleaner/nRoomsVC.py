@@ -1,64 +1,31 @@
 from abc import abstractmethod
 
-# Environment Class
 class Environment(object):
+
     @abstractmethod
     def __init__(self, n):
         self.n = n
+
     def executeStep(self, n=1):
         raise NotImplementedError('action must be defined!')
+
     def executeAll(self):
         raise NotImplementedError('action must be defined!')
+
     def delay(self, n=100):
         self.delay = n
 
-# Room Class
-class Room:
-    def __init__(self, location, status="dirty"):
-        self.location = location
-        self.status = status
 
-# Abstract Agent Class
-class Agent(object):
-    @abstractmethod
-    def __init__(self):
-        pass
-    @abstractmethod
-    def sense(self, environment):
-        pass
-    @abstractmethod
-    def act(self):
-        pass
-
-# Vaccum Cleaner Agent Class
-class VaccumAgent(Agent):
-    def __init__(self):
-        pass
-    def sense(self, env):
-        self.environment = env
-    def act(self):
-        if self.environment.currentRoom.status == 'dirty':
-            if self.environment.currentRoom.location == 'A':
-                return 'right'
-            elif self.environment.currentRoom.location == 'B':
-                return 'middle'
-            elif self.environment.currentRoom.location == 'C':
-                return 'left'
-        else:
-            return 'clean'
-
-# Environment Class
 class TwoRoomVaccumCleanerEnvironment(Environment):
     def __init__(self, agent):
-        # Constructor
         self.r1 = Room('A', 'dirty')
         self.r2 = Room('B', 'dirty')
-        self.r3 = Room('C', 'dirty')
         self.agent = agent
         self.currentRoom = self.r1
         self.delay = 1000
         self.step = 1
         self.action = ""
+
     def executeStep(self, n=1):
         for _ in range(0, n):
             self.displayPerception()
@@ -69,25 +36,63 @@ class TwoRoomVaccumCleanerEnvironment(Environment):
                 self.currentRoom.status = 'clean'
             elif res == 'right':
                 self.currentRoom = self.r2
-            elif res == 'middle':
-                self.currentRoom = self.r3
-            elif res == 'left':
+            else:
                 self.currentRoom = self.r1
             self.displayAction()
             self.step += 1
+
     def executeAll(self):
         raise NotImplementedError('action must be defined!')
+
     def displayPerception(self):
         print("Perception at step %d is [%s,%s]" % (
             self.step, self.currentRoom.status, self.currentRoom.location))
+
     def displayAction(self):
         print(
             "------- Action taken at step %d is [%s]" % (self.step, self.action))
+
     def delay(self, n=100):
         self.delay = n
 
-# Test Program
+
+class Room:
+    def __init__(self, location, status="dirty"):
+        self.location = location
+        self.status = status
+
+
+class Agent(object):
+    @abstractmethod
+    def __init__(self): pass
+
+    @abstractmethod
+    def sense(self, environment):
+        pass
+
+    @abstractmethod
+    def act(self):
+        pass
+
+
+class VaccumAgent(Agent):
+
+    def __init__(self):
+        pass
+
+    def sense(self, env):
+        self.environment = env
+
+    def act(self):
+        if self.environment.currentRoom.status == 'dirty':
+            return 'clean'
+        if self.environment.currentRoom.location == 'A':
+            return 'right'
+
+        return 'left'
+
+
 if __name__ == '__main__':
     vcagent = VaccumAgent()
-    env = TwoRoomVaccumCleanerEnvironment(vcagent)
-    env.executeStep(5)
+    env = NRoomVaccumCleanerEnvironment(vcagent, 5) 
+    env.executeStep(50)
