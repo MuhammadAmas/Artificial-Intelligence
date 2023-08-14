@@ -7,5 +7,5 @@
 ### * [Enviorments and Agents](https://github.com/MuhammadAmas/Artificial-Intelligence/tree/main/Lab%2004%20-%20Enviorments%20and%20Agents)
 ### * [N Queen Problem](https://github.com/MuhammadAmas/Artificial-Intelligence/tree/main/Lab%2005%20-%20N%20Queen%20Problem)
 ### * [Tower of Haoi & Travelling Salesman Problem](https://github.com/MuhammadAmas/Artificial-Intelligence/tree/main/Lab%2006)
-### * [Genetic Algo](https://github.com/MuhammadAmas/Artificial-Intelligence/tree/main/Lab%2005%20-%20Genetic%Algo)
+### * [Genetic Algo](https://github.com/MuhammadAmas/Artificial-Intelligence/tree/main/Lab%2007%20-%20Genetic%20Algo)
 
